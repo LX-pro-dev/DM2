@@ -1,0 +1,42 @@
+package Exoa;
+import java.io.*;
+import java.util.*;
+
+public class GenerateFile {
+	public static void main(String[]args)throws IOException {
+		Scanner sc= new Scanner(System.in);
+		String myFile, line;
+		File f;
+		FileWriter FW;
+		BufferedWriter BW;
+		char choice;
+		
+		System.out.println("Donnez le nom du ficher à créer");
+		myFile=sc.nextLine();
+		f= new File(myFile);
+		FW= new FileWriter(f);
+		BW=new BufferedWriter(FW);
+		
+		System.out.println("voulez-vous enregistrer une phrase (O/N)?"
+				);
+		choice=sc.nextLine().charAt(0);
+		while(choice=='O') {
+			System.out.println("Donner une phrase: "
+					+ "\n (en majuscule et sans accent)");
+			line=(sc.nextLine()).toUpperCase();
+			//System.out.println(line);
+			
+			if(choice=='O') {
+				BW.write(line,0,line.length());
+				BW.newLine();
+			}
+			System.out.println("Voulez-vous stocker une autre phrase (O/N) ?");
+			choice=sc.nextLine().charAt(0);
+		}
+		
+		BW.close();
+		System.out.println("Fin de la création du fichier");
+		sc.close();
+	
+	}
+}
