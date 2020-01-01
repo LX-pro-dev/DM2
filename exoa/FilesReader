@@ -34,7 +34,7 @@ public class FilesReader {
 			}
 		}while(result!=null);
 		
-		System.out.println("Voici la liste des mots de 7 lettres ou plus :\n");// c'est ici quil va falloir commencer à donner des instructions nouvelles
+		System.out.println("Voici la liste des mots de 7 lettres ou plus :\n");
 		for(String elem: tab2){System.out.println (elem);}
 		
 		BR.close();
