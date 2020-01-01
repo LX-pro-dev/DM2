@@ -1,0 +1,46 @@
+package Exoa;
+import java.io.*;
+import java.util.*;
+
+public class FilesReader {
+	public static void main(String[]args) throws IOException {
+		Scanner sc=new Scanner(System.in);
+		String myFile, line,result;
+		String[] tab;
+		ArrayList<String> tab2=new ArrayList<String>();
+		File f;
+		FileReader FR;
+		BufferedReader BR;
+		int l;
+		
+		System.out .println("Donner le nom du fichier à analyser :");
+		myFile=sc.nextLine();
+		f=new File(myFile);
+		FR=new FileReader(f);
+		BR=new BufferedReader(FR);
+		
+		do {
+			line=BR.readLine();
+			result=line.replaceAll("[\\-\\+\\.\\^;\\':,)(!?\"]",""); //ça me fait un nullpointerexeption!!
+			if(result!=null) {
+				tab=result.split(" ");
+				
+				l=tab.length;
+				for (int i=0;i<l;i++) {
+					if (tab[i].length()>=7) {
+						tab2.add(tab[i]);
+					}
+				}
+			}
+		}while(result!=null);
+		
+		System.out.println("Voici la liste des mots de 7 lettres ou plus :\n");// c'est ici quil va falloir commencer à donner des instructions nouvelles
+		for(String elem: tab2){System.out.println (elem);}
+		
+		BR.close();
+		sc.close();
+		System.out.println("\nFin de la lecture du fichier");
+		
+		
+	}
+}
