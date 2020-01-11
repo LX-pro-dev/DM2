@@ -21,20 +21,22 @@ public class FilesReader {
 		
 		do {
 			line=BR.readLine();
-			result=line.replaceAll("[\\-\\+\\.\\^;\\':,)(!?\"]",""); //ça me fait un nullpointerexeption!!
-			if(result!=null) {
-				tab=result.split(" ");
+			if(line!=null) {
+				line=line.replaceAll("[\\-\\+\\.\\^':,]",""); //ça me fait un nullpointerexeption!!
+				if(line!=null) {
+					tab=line.split(" ");
 				
-				l=tab.length;
-				for (int i=0;i<l;i++) {
-					if (tab[i].length()>=7) {
-						tab2.add(tab[i]);
+					l=tab.length;
+					for (int i=0;i<l;i++) {
+						if (tab[i].length()>=7) {
+							tab2.add(tab[i]);
+						}
 					}
 				}
 			}
-		}while(result!=null);
+		}while(line!=null);
 		
-		System.out.println("Voici la liste des mots de 7 lettres ou plus :\n");
+		System.out.println("Voici la liste des mots de 7 lettres ou plus :\n");// c'est ici quil va falloir commencer à donner des instructions nouvelles
 		for(String elem: tab2){System.out.println (elem);}
 		
 		BR.close();
